@@ -75,7 +75,7 @@ warmup_backend()
 @st.cache_data(ttl=3600)  # 1 ghante tak cache raho, baar baar API mat maaro
 def api_get_json(path: str, params: dict | None = None):
     try:
-        r = requests.get(f"{API_BASE}{path}", params=params, timeout=60)
+        r = requests.get(f"{API_BASE}{path}", params=params, timeout=120)
         if r.status_code >= 400:
             return None, f"HTTP {r.status_code}: {r.text[:300]}"
         return r.json(), None
